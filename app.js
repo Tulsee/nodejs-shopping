@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path')
 var mongoose = require('mongoose'); 
 var  config = require('./config/database');
+var index = require('./routes/index');
 
 //init app
 var app = express();
@@ -21,9 +22,8 @@ app.set('view engine', 'ejs');
 //set public folder
 app.use(express.static(path.join(__dirname , 'public')));
 
-app.get('/', function(req, res){
-    res.send('Tulsee ++ saroja');
-});
+//set routes
+app.use('/', index);
 
 //start server
 var PORT = 3000;
